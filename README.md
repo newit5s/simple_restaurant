@@ -1,10 +1,38 @@
-# Hướng dẫn xây dựng Website Nhà hàng Nhật Bản
+## 🔧 WordPress Admin Panel - Quản lý nội dung
+
+### Dashboard Overview
+```
+WordPress Admin Dashboard
+├── 📊 Dashboard
+│   ├── Quick Actions
+│   ├── Recent Posts/Pages
+│   └── Site Stats
+├── 📄 Pages
+│   ├── All Pages
+│   ├── Add New
+│   └── UX Builder Templates
+├── 📝 Posts (Blog)
+│   ├── All Posts
+│   ├── Categories
+│   └── Tags
+├── 🍽️ Menu Items (Custom Post Type)
+│   ├── All Menu Items
+│   ├── Add New Menu Item
+│   ├── Categories (Cơm, Mì, Sashimi, Đồ uống)
+│   └── Tags
+├── ⭐ Reviews (Custom Post Type)
+│   ├── All Reviews
+│   ├── Add New Review
+│   └── Review Settings
+├── 🎉 Events (Custom Post Type)# Hướng dẫn xây dựng Website Nhà hàng Nhật Bản
 
 ## 📋 Thông tin dự án
 
 - **Domain**: test.vietsora.com
 - **CMS**: WordPress 6.8
-- **Framework CSS**: Tailwind CSS
+- **Theme**: Flatsome (UX Builder)
+- **Framework CSS**: Tailwind CSS + Flatsome CSS
+- **Builder**: UX Builder (Flatsome built-in)
 - **Ngôn ngữ**: Tiếng Anh, Tiếng Việt, Tiếng Nhật
 - **Target**: Giới thượng lưu
 - **Style**: Đơn giản, sang trọng
@@ -29,17 +57,27 @@
 - **Sashimi** (Sashimi / 刺身)
 - **Đồ uống** (Beverages / 飲み物)
 
-## 🔧 Plugin và tích hợp cần thiết
+## 🔧 Theme & Plugin Setup
+
+### Theme chính
+```
+Flatsome Theme (Latest version)
+- UX Builder (built-in page builder)
+- WooCommerce ready (nếu cần bán online sau này)
+- Responsive design system
+- Multiple header/footer layouts
+```
 
 ### Plugin bắt buộc
 ```
-1. Polylang - Đa ngôn ngữ
-2. Contact Form 7 - Form liên hệ
-3. RankMath SEO - Tối ưu SEO
-4. [Tên plugin đặt bàn hiện có]
-5. Custom Post Type UI - Tạo custom post types
-6. Advanced Custom Fields (ACF) - Custom fields
-7. WP Rocket hoặc W3 Total Cache - Tối ưu tốc độ
+1. Flatsome Theme (Primary theme)
+2. Polylang - Đa ngôn ngữ
+3. Contact Form 7 - Form liên hệ
+4. RankMath SEO - Tối ưu SEO
+5. [Tên plugin đặt bàn hiện có]
+6. Custom Post Type UI - Tạo custom post types
+7. Advanced Custom Fields (ACF) - Custom fields
+8. WP Rocket hoặc W3 Total Cache - Tối ưu tốc độ
 ```
 
 ### Custom Post Types cần tạo
@@ -47,199 +85,398 @@
 1. Menu Items (menu_item)
 2. Customer Reviews (review)
 3. Gallery (gallery)
+4. Events (events) - Sự kiện nhà hàng
 ```
 
-## 🎨 Design System với Tailwind CSS
+## 🏗️ Cấu trúc Website với Flatsome + UX Builder
 
-### Color Variables
+### Cấu trúc thư mục WordPress
+```
+wp-content/
+├── themes/
+│   ├── flatsome/           # Theme chính
+│   └── flatsome-child/     # Child theme (custom code)
+├── plugins/
+│   ├── polylang/
+│   ├── contact-form-7/
+│   ├── rankmath/
+│   └── advanced-custom-fields/
+├── uploads/
+│   ├── 2024/
+│   │   ├── menu-images/
+│   │   ├── gallery/
+│   │   └── blog/
+│   └── ux-builder-templates/   # UX Builder saved templates
+```
+
+### Cấu trúc Admin WordPress
+```
+Dashboard
+├── Pages (Trang)
+│   ├── Home (Trang chủ)
+│   ├── About Us (Về chúng tôi) 
+│   ├── Menu (Thực đơn)
+│   ├── Reservation (Đặt bàn)
+│   ├── Contact (Liên hệ)
+│   └── Gallery (Thư viện ảnh)
+├── Posts (Bài viết - Blog)
+├── Menu Items (Custom Post Type)
+├── Reviews (Custom Post Type)
+├── Events (Custom Post Type)
+├── Media Library
+│   ├── Menu Photos
+│   ├── Restaurant Photos
+│   ├── Chef Photos
+│   └── Blog Images
+└── UX Builder Templates
+    ├── Header Templates
+    ├── Footer Templates
+    ├── Section Templates
+    └── Page Templates
+```
+
+## 🎨 Flatsome Customization với UX Builder
+
+### Flatsome Theme Customizer Settings
 ```css
-:root {
-  --color-black: #000000;
-  --color-gray: #6B7280;
-  --color-brown: #8B4513;
-  --color-white: #FFFFFF;
-  --color-gray-light: #F3F4F6;
-  --color-brown-light: #D2B48C;
-}
+/* Trong WordPress Admin > Appearance > Customize */
+
+1. Site Identity:
+   - Site Title: Restaurant Name
+   - Tagline: 味と心の芸術 - Nghệ thuật của vị giác và tâm hồn
+   - Logo: Upload logo chính
+   - Site Icon: Upload favicon
+
+2. Colors:
+   - Primary Color: #8B4513 (Nâu)
+   - Secondary Color: #6B7280 (Xám)
+   - Success Color: #10B981 (Xanh lá)
+   - Alert Color: #F59E0B (Vàng)
+   - Color Scheme: Custom
+
+3. Typography:
+   - Body Font: Noto Sans
+   - Heading Font: Playfair Display
+   - Alt Font: Noto Sans JP (cho tiếng Nhật)
+
+4. Header:
+   - Header Type: Header Builder
+   - Header Height: Auto
+   - Header Background: White
+   - Sticky Header: Yes
+
+5. Footer:
+   - Footer Type: Footer Builder
+   - Footer Background: Black
+   - Footer Text Color: White
 ```
 
-### Typography
-```css
-/* Primary Font - Noto Sans (hỗ trợ đa ngôn ngữ) */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
+### UX Builder - Custom Sections Library
 
-.font-primary {
-  font-family: 'Noto Sans', 'Noto Sans JP', sans-serif;
-}
-
-/* Accent Font - Playfair Display cho tiêu đề */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
-
-.font-accent {
-  font-family: 'Playfair Display', serif;
-}
-```
-
-### Responsive Breakpoints
-```css
-/* Mobile: iPhone 14 trở lên (390px+) */
-@media (min-width: 390px) { ... }
-
-/* Tablet: iPad (768px+) */
-@media (min-width: 768px) { ... }
-
-/* Desktop: (1024px+) */
-@media (min-width: 1024px) { ... }
-
-/* Large Desktop: (1440px+) */
-@media (min-width: 1440px) { ... }
-```
-
-## 🧩 Component Library
-
-### 1. Header Component
+#### 1. Hero Section Template
 ```html
-<header class="bg-white shadow-lg sticky top-0 z-50">
-  <nav class="container mx-auto px-4 py-4">
-    <div class="flex justify-between items-center">
+<!-- UX Builder: Row > Banner với Video/Image Background -->
+[ux_banner height="70vh" bg_color="rgb(0,0,0)" bg_overlay="rgba(0,0,0,0.4)"]
+  [text_box position_x="50" position_y="50" text_align="center"]
+    <h1 class="hero-title">味と心の芸術</h1>
+    <p class="hero-subtitle">Nghệ thuật của vị giác và tâm hồn</p>
+    [button text="Xem thực đơn" color="alert" style="outline" size="large" link="/menu"]
+    [button text="Đặt bàn" color="white" style="outline" size="large" link="/reservation"]
+  [/text_box]
+[/ux_banner]
+```
+
+#### 2. About Preview Section
+```html
+<!-- UX Builder: Row với 2 columns -->
+[row style="large" v_align="middle"]
+  [col span="6" span__sm="12"]
+    [ux_image id="about-image" image_hover="overlay-add"]
+  [/col]
+  [col span="6" span__sm="12"]
+    [text_box style="normal"]
+      <h2>Về nhà hàng chúng tôi</h2>
+      <p>Chào mừng đến với [Tên nhà hàng] - nơi hội tụ tinh hoa ẩm thực Nhật Bản...</p>
+      [button text="Tìm hiểu thêm" color="primary" link="/about"]
+    [/text_box]
+  [/col]
+[/row]
+```
+
+#### 3. Menu Grid Template
+```html
+<!-- UX Builder: Blog Posts Grid hiển thị Menu Items -->
+[blog_posts style="normal" columns="3" columns__md="2" columns__sm="1" 
+posts="9" show_date="false" excerpt="false" image_height="250px"
+cat="menu-items" post_type="menu_item"]
+```
+
+#### 4. Reviews Carousel
+```html
+<!-- UX Builder: Testimonials Slider -->
+[ux_testimonials style="push" columns="3" columns__md="2" columns__sm="1" 
+auto_slide="5000" infinitive="true"]
+  [testimonial name="Nguyễn Văn A" company="Khách hàng VIP" image="review1.jpg"]
+    Món ăn tuyệt vời, dịch vụ chuyên nghiệp...
+  [/testimonial]
+  [testimonial name="Trần Thị B" company="Food Blogger" image="review2.jpg"]
+    Không gian sang trọng, hương vị chính thống...
+  [/testimonial]
+[/ux_testimonials]
+```
+
+### UX Builder - Global Elements
+
+#### Header Builder Layout
+```html
+<!-- Header Structure trong UX Builder -->
+[section class="header-main"]
+  [row style="collapse" width="full-width"]
+    [col span="3" span__sm="6" align="left"]
       <!-- Logo -->
-      <div class="font-accent text-2xl font-bold text-black">
-        Restaurant Name
-      </div>
-      
-      <!-- Desktop Menu -->
-      <ul class="hidden md:flex space-x-8">
-        <li><a href="#" class="text-gray-700 hover:text-brown transition-colors">Trang chủ</a></li>
-        <li><a href="#" class="text-gray-700 hover:text-brown transition-colors">Về chúng tôi</a></li>
-        <li><a href="#" class="text-gray-700 hover:text-brown transition-colors">Thực đơn</a></li>
-        <li><a href="#" class="text-gray-700 hover:text-brown transition-colors">Đặt bàn</a></li>
-        <li><a href="#" class="text-gray-700 hover:text-brown transition-colors">Liên hệ</a></li>
-        <li><a href="#" class="text-gray-700 hover:text-brown transition-colors">Blog</a></li>
-      </ul>
-      
-      <!-- Language Switcher -->
-      <div class="language-switcher">
-        <!-- Polylang language switcher -->
-      </div>
-      
-      <!-- Mobile Menu Button -->
-      <button class="md:hidden" id="mobile-menu-btn">
-        <span class="sr-only">Mở menu</span>
-        <!-- Hamburger icon -->
-      </button>
-    </div>
-  </nav>
-</header>
+      [logo img="logo.png" height="60px"]
+    [/col]
+    [col span="6" span__sm="0" align="center" class="nav-main"]
+      <!-- Main Navigation -->
+      [ux_menu menu="primary-menu" text_color="dark"]
+    [/col]
+    [col span="3" span__sm="6" align="right"]
+      <!-- Language Switcher + Mobile Menu -->
+      [ux_language_switcher]
+      [mobile_sidebar_toggle]
+    [/col]
+  [/row]
+[/section]
 ```
 
-### 2. Hero Section Component
+#### Footer Builder Layout
 ```html
-<section class="hero bg-gradient-to-r from-black to-gray-800 text-white py-20">
-  <div class="container mx-auto px-4 text-center">
-    <h1 class="font-accent text-4xl md:text-6xl font-bold mb-6">
-      味と心の芸術
-    </h1>
-    <p class="text-xl md:text-2xl mb-8 text-gray-300">
-      Nghệ thuật của vị giác và tâm hồn
-    </p>
-    <div class="space-x-4">
-      <a href="#menu" class="bg-brown hover:bg-brown-dark text-white px-8 py-3 rounded-lg transition-colors">
-        Xem thực đơn
-      </a>
-      <a href="#reservation" class="border border-white hover:bg-white hover:text-black text-white px-8 py-3 rounded-lg transition-colors">
-        Đặt bàn
-      </a>
-    </div>
-  </div>
-</section>
-```
-
-### 3. Menu Card Component
-```html
-<div class="menu-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-  <div class="aspect-w-16 aspect-h-9">
-    <img src="[image-url]" alt="Menu item" class="w-full h-48 object-cover">
-  </div>
-  <div class="p-6">
-    <h3 class="font-accent text-xl font-semibold mb-2 text-black">Tên món</h3>
-    <p class="text-gray-600 mb-4">Mô tả món ăn chi tiết...</p>
-    <div class="flex justify-between items-center">
-      <span class="text-brown font-bold text-lg">299.000 VNĐ</span>
-      <button class="bg-black hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors">
-        Thêm vào
-      </button>
-    </div>
-  </div>
-</div>
-```
-
-### 4. Review Component
-```html
-<div class="review-card bg-gray-50 p-6 rounded-lg">
-  <div class="flex items-center mb-4">
-    <img src="[avatar-url]" alt="Customer" class="w-12 h-12 rounded-full mr-4">
-    <div>
-      <h4 class="font-semibold text-black">Tên khách hàng</h4>
-      <div class="flex text-yellow-400">
-        ★★★★★
-      </div>
-    </div>
-  </div>
-  <p class="text-gray-700 italic">
-    "Đánh giá của khách hàng về nhà hàng..."
-  </p>
-</div>
-```
-
-### 5. Footer Component
-```html
-<footer class="bg-black text-white py-12">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      <!-- Logo & Info -->
-      <div>
-        <h3 class="font-accent text-2xl font-bold mb-4">Restaurant Name</h3>
-        <p class="text-gray-300 mb-4">味と心の芸術</p>
-        <div class="flex space-x-4">
-          <!-- Social Media Icons -->
-        </div>
-      </div>
-      
-      <!-- Quick Links -->
-      <div>
-        <h4 class="font-semibold mb-4">Liên kết nhanh</h4>
-        <ul class="space-y-2">
-          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Về chúng tôi</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Thực đơn</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Đặt bàn</a></li>
-        </ul>
-      </div>
-      
-      <!-- Contact Info -->
-      <div>
-        <h4 class="font-semibold mb-4">Liên hệ</h4>
-        <div class="space-y-2 text-gray-300">
-          <p>📍 Địa chỉ nhà hàng</p>
-          <p>📞 (024) 1234 5678</p>
-          <p>✉️ info@restaurant.com</p>
-        </div>
-      </div>
-      
-      <!-- Opening Hours -->
-      <div>
-        <h4 class="font-semibold mb-4">Giờ mở cửa</h4>
-        <div class="space-y-2 text-gray-300">
-          <p>Thứ 2 - Thứ 6: 11:00 - 22:00</p>
-          <p>Thứ 7 - Chủ nhật: 10:00 - 23:00</p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-300">
+<!-- Footer Structure trong UX Builder -->
+[section bg_color="rgb(0,0,0)" text_color="light"]
+  [row style="large"]
+    [col span="3" span__sm="12"]
+      [text_box]
+        <h4>Restaurant Name</h4>
+        <p>味と心の芸術</p>
+        [follow style="outline" size="small"]
+      [/text_box]
+    [/col]
+    [col span="3" span__sm="12"]
+      [text_box]
+        <h4>Liên kết nhanh</h4>
+        [ux_menu menu="footer-menu" text_color="light"]
+      [/text_box]
+    [/col]
+    [col span="3" span__sm="12"]
+      [text_box]
+        <h4>Liên hệ</h4>
+        <p>📍 Địa chỉ nhà hàng</p>
+        <p>📞 (024) 1234 5678</p>
+        <p>✉️ info@restaurant.com</p>
+      [/text_box]
+    [/col]
+    [col span="3" span__sm="12"]
+      [text_box]
+        <h4>Giờ mở cửa</h4>
+        <p>Thứ 2 - Thứ 6: 11:00 - 22:00</p>
+        <p>Thứ 7 - CN: 10:00 - 23:00</p>
+      [/text_box]
+    [/col]
+  [/row]
+  
+  [row style="collapse"]
+    [col span="12" align="center"]
+      [gap height="20px"]
       <p>&copy; 2024 Restaurant Name. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+    [/col]
+  [/row]
+[/section]
+```
+
+## 📄 Hướng dẫn tạo Pages với UX Builder
+
+### 1. Trang chủ (Home Page)
+```
+WordPress Admin > Pages > Add New > "Trang chủ"
+- Template: UX Builder
+- Page Attributes: Front Page
+
+UX Builder Structure:
+```
+
+#### Section 1: Hero Banner
+```html
+[section class="hero-section" bg_overlay="rgba(0,0,0,0.5)" bg_pos="center center"]
+  [ux_banner height="80vh" bg="hero-bg.jpg"]
+    [text_box position_x="50" position_y="50" text_align="center" text_color="light"]
+      <h1 class="display-1">味と心の芸術</h1>
+      <p class="lead">Nghệ thuật của vị giác và tâm hồn</p>
+      [gap height="30px"]
+      [button text="Xem thực đơn" style="outline" color="white" size="xlarge" link="#menu"]
+      [button text="Đặt bàn ngay" color="alert" size="xlarge" link="/reservation"]
+    [/text_box]
+  [/ux_banner]
+[/section]
+```
+
+#### Section 2: About Preview
+```html
+[section class="about-preview" padding="80px"]
+  [row style="large" v_align="middle"]
+    [col span="6" span__sm="12"]
+      [ux_image id="about-restaurant" lightbox="true" image_hover="zoom"]
+    [/col]
+    [col span="6" span__sm="12"]
+      [gap height="30px" visibility="hide-for-medium"]
+      [text_box style="normal"]
+        <h2>Câu chuyện của chúng tôi</h2>
+        <p class="lead">Hành trình mang tinh hoa ẩm thực Nhật Bản đến Việt Nam...</p>
+        <p>Chi tiết về nhà hàng, chef, và cam kết chất lượng...</p>
+        [gap height="20px"]
+        [button text="Tìm hiểu thêm" color="primary" style="outline"]
+      [/text_box]
+    [/col]
+  [/row]
+[/section]
+```
+
+#### Section 3: Featured Menu
+```html
+[section class="featured-menu" bg_color="rgb(248,248,248)" padding="80px"]
+  [row]
+    [col span="12" align="center"]
+      <h2>Thực đơn đặc sắc</h2>
+      <p class="lead">Những món ăn tinh túy được yêu thích nhất</p>
+      [gap height="50px"]
+    [/col]
+  [/row]
+  
+  [blog_posts style="normal" type="grid" columns="4" columns__md="2" columns__sm="1"
+  posts="8" show_date="false" excerpt="false" text_align="center"
+  post_type="menu_item" meta_key="featured" meta_value="yes"]
+[/section]
+```
+
+#### Section 4: Customer Reviews
+```html
+[section class="reviews-section" padding="80px"]
+  [row]
+    [col span="12" align="center"]
+      <h2>Khách hàng nói gì về chúng tôi</h2>
+      [gap height="50px"]
+    [/col]
+  [/row]
+  
+  [ux_testimonials style="push" columns="3" columns__md="2" columns__sm="1" 
+  auto_slide="5000" infinitive="true" bg_color="rgb(255,255,255)"]
+[/section]
+```
+
+### 2. Trang Thực đơn (Menu Page)
+```
+WordPress Admin > Pages > Add New > "Thực đơn"
+- Template: UX Builder
+
+UX Builder Structure:
+```
+
+#### Page Header
+```html
+[section class="page-header" bg_color="rgb(248,248,248)" padding="60px"]
+  [row]
+    [col span="12" align="center"]
+      <h1>Thực đơn của chúng tôi</h1>
+      <p class="lead">Hương vị Nhật Bản chính thống</p>
+    [/col]
+  [/row]
+[/section]
+```
+
+#### Menu Categories Filter
+```html
+[section class="menu-filters" padding="40px"]
+  [row]
+    [col span="12" align="center"]
+      [ux_portfolio_filter filter="menu-category"]
+    [/col]
+  [/row]
+[/section]
+```
+
+#### Menu Items Grid
+```html
+[section class="menu-grid" padding="40px"]
+  [ux_portfolio style="normal" columns="3" columns__md="2" columns__sm="1"
+  type="slider" cat="menu-items" posts="-1" image_height="250px"
+  text_align="center" filter="menu-category"]
+[/section]
+```
+
+### 3. Trang Đặt bàn (Reservation Page)
+```html
+[section class="reservation-hero" bg="reservation-bg.jpg" padding="60px"]
+  [row]
+    [col span="12" align="center"]
+      <h1 class="text-white">Đặt bàn</h1>
+      <p class="lead text-white">Trải nghiệm ẩm thực đáng nhớ</p>
+    [/col]
+  [/row]
+[/section]
+
+[section class="reservation-form" padding="80px"]
+  [row]
+    [col span="8" span__sm="12"]
+      [contact-form-7 id="123" title="Reservation Form"]
+    [/col]
+    [col span="4" span__sm="12"]
+      [text_box]
+        <h3>Thông tin liên hệ</h3>
+        <p><strong>Địa chỉ:</strong> 123 Đường ABC, Quận XYZ</p>
+        <p><strong>Điện thoại:</strong> (024) 1234 5678</p>
+        <p><strong>Email:</strong> info@restaurant.com</p>
+        
+        <h4>Giờ mở cửa:</h4>
+        <p>Thứ 2 - Thứ 6: 11:00 - 22:00</p>
+        <p>Thứ 7 - Chủ nhật: 10:00 - 23:00</p>
+      [/text_box]
+    [/col]
+  [/row]
+[/section]
+```
+
+### 4. Trang Liên hệ (Contact Page)
+```html
+[section class="contact-info" padding="80px"]
+  [row]
+    [col span="6" span__sm="12"]
+      [text_box]
+        <h2>Liên hệ với chúng tôi</h2>
+        <p>Chúng tôi luôn sẵn sàng phục vụ bạn</p>
+        
+        <h4>Địa chỉ nhà hàng:</h4>
+        <p>123 Đường ABC, Quận XYZ, TP.HCM</p>
+        
+        <h4>Liên hệ:</h4>
+        <p>📞 (024) 1234 5678</p>
+        <p>✉️ info@restaurant.com</p>
+        
+        [follow style="fill" size="medium"]
+      [/text_box]
+    [/col]
+    
+    [col span="6" span__sm="12"]
+      [contact-form-7 id="456" title="Contact Form"]
+    [/col]
+  [/row]
+[/section]
+
+[section class="map-section" padding="0px"]
+  [row style="collapse"]
+    [col span="12"]
+      [map height="400px" lat="21.0285" long="105.8542" zoom="15"]
+    [/col]
+  [/row]
+[/section]
 ```
 
 ## 📱 Page Templates
