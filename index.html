@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>味と心の芸術 | Nhà hàng Nhật Bản cao cấp</title>
+  <meta name="description" content="Nhà hàng Nhật Bản cao cấp tại Việt Nam - Nghệ thuật của vị giác và tâm hồn." />
+  <meta property="og:title" content="Nhà hàng Nhật Bản cao cấp - 味と心の芸術" />
+  <meta property="og:description" content="Nghệ thuật của vị giác và tâm hồn" />
+  <meta property="og:image" content="https://test.vietsora.com/images/og-image.jpg" />
+  <meta property="og:url" content="https://test.vietsora.com" />
+  <meta property="og:type" content="restaurant" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            black: '#000000',
+            gray: {
+              DEFAULT: '#6B7280',
+              light: '#F3F4F6'
+            },
+            brown: {
+              DEFAULT: '#8B4513',
+              light: '#D2B48C'
+            },
+            ivory: '#FDFCF7'
+          },
+          fontFamily: {
+            primary: ['Noto Sans', 'Noto Sans JP', 'sans-serif'],
+            accent: ['Playfair Display', 'serif']
+          },
+          boxShadow: {
+            soft: '0 25px 45px rgba(0, 0, 0, 0.08)'
+          },
+          backgroundImage: {
+            'hero-pattern': "linear-gradient(120deg, rgba(0,0,0,0.75), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=1600&q=80')",
+            'paper-texture': "url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80')"
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Noto Sans', 'Noto Sans JP', sans-serif;
+      background-color: #FDFCF7;
+      color: #1F2933;
+    }
+    .font-accent {
+      font-family: 'Playfair Display', serif;
+    }
+    .language-section[data-active="false"] {
+      display: none;
+    }
+  </style>
+</head>
+<body class="antialiased text-gray-800">
+  <header class="bg-white/95 backdrop-blur shadow-lg sticky top-0 z-50">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-4">
+        <a href="#home" class="flex items-center space-x-3">
+          <span class="h-12 w-12 rounded-full bg-brown text-white flex items-center justify-center font-accent text-xl tracking-widest">味</span>
+          <div>
+            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Japanese Dining</p>
+            <p class="text-2xl font-bold font-accent text-black">Mikoto</p>
+          </div>
+        </a>
+        <div class="hidden lg:flex items-center space-x-8">
+          <a href="#home" class="text-sm font-medium text-gray-700 hover:text-brown transition">Trang chủ</a>
+          <a href="#about" class="text-sm font-medium text-gray-700 hover:text-brown transition">Về chúng tôi</a>
+          <a href="#menu" class="text-sm font-medium text-gray-700 hover:text-brown transition">Thực đơn</a>
+          <a href="#reservation" class="text-sm font-medium text-gray-700 hover:text-brown transition">Đặt bàn</a>
+          <a href="#contact" class="text-sm font-medium text-gray-700 hover:text-brown transition">Liên hệ</a>
+          <a href="#blog" class="text-sm font-medium text-gray-700 hover:text-brown transition">Blog</a>
+        </div>
+        <div class="flex items-center space-x-4">
+          <div class="hidden md:flex rounded-full border border-gray-200 overflow-hidden">
+            <button class="px-3 py-1 text-xs font-medium bg-gray-light text-gray-700" data-lang="vi">VI</button>
+            <button class="px-3 py-1 text-xs font-medium hover:bg-gray-light text-gray-500" data-lang="en">EN</button>
+            <button class="px-3 py-1 text-xs font-medium hover:bg-gray-light text-gray-500" data-lang="ja">日本語</button>
+          </div>
+          <a href="#reservation" class="hidden sm:inline-flex items-center space-x-2 bg-brown text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-brown-light transition">
+            <span>Đặt bàn ngay</span>
+          </a>
+          <button class="lg:hidden" id="menu-toggle" aria-label="Toggle navigation">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="lg:hidden hidden border-t border-gray-200 pb-6">
+        <div class="pt-4 space-y-2">
+          <a href="#home" class="block text-sm font-medium text-gray-700 hover:text-brown">Trang chủ</a>
+          <a href="#about" class="block text-sm font-medium text-gray-700 hover:text-brown">Về chúng tôi</a>
+          <a href="#menu" class="block text-sm font-medium text-gray-700 hover:text-brown">Thực đơn</a>
+          <a href="#reservation" class="block text-sm font-medium text-gray-700 hover:text-brown">Đặt bàn</a>
+          <a href="#contact" class="block text-sm font-medium text-gray-700 hover:text-brown">Liên hệ</a>
+          <a href="#blog" class="block text-sm font-medium text-gray-700 hover:text-brown">Blog</a>
+          <div class="flex items-center space-x-2 pt-4">
+            <button class="px-3 py-1 text-xs font-medium bg-gray-light rounded-full" data-lang="vi">VI</button>
+            <button class="px-3 py-1 text-xs font-medium border border-gray-200 rounded-full" data-lang="en">EN</button>
+            <button class="px-3 py-1 text-xs font-medium border border-gray-200 rounded-full" data-lang="ja">日本語</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="home" class="bg-hero-pattern bg-cover bg-center text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+      <div class="max-w-3xl">
+        <p class="uppercase tracking-[0.35em] text-gray-300 text-xs mb-6">味と心の芸術</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-accent font-semibold leading-tight">Nghệ thuật ẩm thực Nhật Bản dành cho giới thượng lưu</h1>
+        <p class="mt-6 text-gray-200 text-base sm:text-lg">Trải nghiệm bữa tối tinh tế với những món ăn chuẩn mực, phục vụ trong không gian chan hòa giữa truyền thống và sự sang trọng đương đại.</p>
+        <div class="mt-10 flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-3 sm:space-y-0">
+          <a href="#reservation" class="inline-flex items-center justify-center bg-brown px-6 py-3 rounded-full text-sm font-semibold hover:bg-brown-light transition">Đặt bàn ngay</a>
+          <a href="#menu" class="inline-flex items-center justify-center border border-white/40 px-6 py-3 rounded-full text-sm font-semibold text-white hover:bg-white/10 transition">Khám phá thực đơn</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section id="about" class="relative overflow-hidden py-24 bg-white">
+    <div class="absolute inset-0 opacity-10 bg-paper-texture"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8">
+          <p class="text-sm uppercase tracking-[0.35em] text-gray-500">About Us</p>
+          <h2 class="text-3xl sm:text-4xl font-accent text-black">Tinh hoa ẩm thực Nhật Bản giữa lòng Việt Nam</h2>
+          <div class="space-y-6">
+            <div class="language-section" data-lang="vi" data-active="true">
+              <p class="text-gray-700 leading-relaxed">Chào mừng đến với Mikoto - nơi hội tụ tinh hoa ẩm thực Nhật Bản giữa lòng Việt Nam. Với hơn 10 năm kinh nghiệm, chúng tôi tự hào mang đến những món ăn chính thống, được chế biến từ nguyên liệu tươi ngon nhất và nghệ thuật ẩm thực truyền thống Nhật Bản.</p>
+            </div>
+            <div class="language-section" data-lang="en" data-active="false">
+              <p class="text-gray-700 leading-relaxed">Welcome to Mikoto - where authentic Japanese culinary excellence meets Vietnamese hospitality. With over 10 years of experience, we proudly serve traditional dishes crafted from the finest ingredients and time-honored Japanese culinary artistry.</p>
+            </div>
+            <div class="language-section" data-lang="ja" data-active="false">
+              <p class="text-gray-700 leading-relaxed">ミコトへようこそ。ここでは、ベトナムの中心で本格的な日本料理の真髄をお楽しみいただけます。10年以上の経験を持つ私たちは、最高品質の食材と伝統的な技術で作られた料理を誇りを持って提供しています。</p>
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-3 gap-4 text-center">
+            <div class="border border-gray-200 rounded-2xl p-4 shadow-soft">
+              <p class="text-3xl font-accent text-brown">10+</p>
+              <p class="mt-2 text-sm text-gray-600">Năm kinh nghiệm</p>
+            </div>
+            <div class="border border-gray-200 rounded-2xl p-4 shadow-soft">
+              <p class="text-3xl font-accent text-brown">30</p>
+              <p class="mt-2 text-sm text-gray-600">Đầu bếp tinh hoa</p>
+            </div>
+            <div class="border border-gray-200 rounded-2xl p-4 shadow-soft">
+              <p class="text-3xl font-accent text-brown">4.9★</p>
+              <p class="mt-2 text-sm text-gray-600">Đánh giá khách hàng</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="rounded-3xl overflow-hidden shadow-soft">
+            <img src="https://images.unsplash.com/photo-1604908176997-12518821c493?auto=format&fit=crop&w=1200&q=80" alt="Fine dining Japanese restaurant interior" class="w-full h-full object-cover" />
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur-lg rounded-3xl p-6 shadow-soft max-w-xs">
+            <p class="text-sm uppercase tracking-[0.3em] text-gray-500">Signature</p>
+            <h3 class="mt-2 font-accent text-2xl text-black">Omakase Experience</h3>
+            <p class="mt-3 text-sm text-gray-600">Hành trình vị giác 12 món, chỉ phục vụ 20 khách mỗi tối.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" class="py-24 bg-gray-light/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div>
+          <p class="text-sm uppercase tracking-[0.35em] text-gray-500">Menu</p>
+          <h2 class="text-3xl sm:text-4xl font-accent text-black">Thực đơn tinh tuyển</h2>
+          <p class="mt-4 text-gray-600 max-w-2xl">Thực đơn được tuyển chọn bởi bếp trưởng Takahiro Sato, đảm bảo sự cân bằng hoàn hảo giữa truyền thống và sáng tạo đương đại.</p>
+        </div>
+        <a href="#reservation" class="inline-flex items-center space-x-2 text-sm font-semibold text-brown hover:text-brown-light">
+          <span>Đặt bàn cho trải nghiệm Omakase</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="mt-12 grid gap-8 lg:grid-cols-4">
+        <article class="rounded-3xl bg-white p-6 shadow-soft border border-white/40">
+          <h3 class="font-accent text-2xl text-black">Cơm</h3>
+          <p class="mt-3 text-sm text-gray-600">ご飯 | Rice Dishes</p>
+          <ul class="mt-6 space-y-4 text-sm text-gray-700">
+            <li>
+              <div class="flex justify-between items-center">
+                <span class="font-medium">Chirashi Don</span>
+                <span class="text-brown font-semibold">799.000 VNĐ</span>
+              </div>
+              <p class="text-gray-500 mt-1">Cơm sashimi đặc biệt với 8 loại cá tươi.</p>
+            </li>
+            <li>
+              <div class="flex justify-between items-center">
+                <span class="font-medium">Wagyu Don</span>
+                <span class="text-brown font-semibold">1.299.000 VNĐ</span>
+              </div>
+              <p class="text-gray-500 mt-1">Thịt bò A5 nướng sốt truffle.</p>
+            </li>
+          </ul>
+        </article>
+        <article class="rounded-3xl bg-white p-6 shadow-soft border border-white/40">
+          <h3 class="font-accent text-2xl text-black">Mì</h3>
+          <p class="mt-3 text-sm text-gray-600">麺類 | Noodles</p>
+          <ul class="mt-6 space-y-4 text-sm text-gray-700">
+            <li>
+              <div class="flex justify-between items-center">
+                <span class="font-medium">Ramen Tonkotsu</span>
+                <span class="text-brown font-semibold">299.000 VNĐ</span>
+              </div>
+              <p class="text-gray-500 mt-1">Nước dùng hầm 16 giờ, topping trứng onsen.</p>
+            </li>
+            <li>
+              <div class="flex justify-between items-center">
+                <span class="font-medium">Soba Lạnh</span>
+                <span class="text-brown font-semibold">249.000 VNĐ</span>
+              </div>
+              <p class="text-gray-500 mt-1">Soba thủ công dùng với nước chấm dashi.</p>
+            </li>
+          </ul>
+        </article>
+        <article class="rounded-3xl bg-white p-6 shadow-soft border border-white/40">
+          <h3 class="font-accent text-2xl text-black">Sashimi</h3>
+          <p class="mt-3 text-sm text-gray-600">刺身 | Sashimi</p>
+          <ul class="mt-6 space-y-4 text-sm text-gray-700">
+            <li>
+              <div class="flex justify-between items-center">
+                <span class="font-medium">Sashimi Moriawase</span>
+                <span class="text-brown font-semibold">899.000 VNĐ</span>
+              </div>
+              <p class="text-gray-500 mt-1">Tổng hợp 12 miếng cá nhập khẩu mỗi ngày.</p>
+            </li>
+            <li>
+              <div class="flex justify-between items-center">
+                <span class="font-medium">Otoro Sashimi</span>
+                <span class="text-brown font-semibold">1.499.000 VNĐ</span>
+              </div>
+              <p class="text-gray-500 mt-1">Bụng cá ngừ xanh béo ngậy.</p>
+            </li>
+          </ul>
+        </article>
+        <article class="rounded-3xl bg-white p-6 shadow-soft border border-white/40">
+          <h3 class="font-accent text-2xl text-black">Đồ uống</h3>
+          <p class="mt-3 text-sm text-gray-600">飲み物 | Beverages</p>
+          <ul class="mt-6 space-y-4 text-sm text-gray-700">
+            <li>
+              <div class="flex justify-between items-center">
+                <span class="font-medium">Sake Premium</span>
+                <span class="text-brown font-semibold">150.000 VNĐ</span>
+              </div>
+              <p class="text-gray-500 mt-1">Sake Junmai Daiginjo nhập khẩu.</p>
+            </li>
+            <li>
+              <div class="flex justify-between items-center">
+                <span class="font-medium">Trà Matcha</span>
+                <span class="text-brown font-semibold">110.000 VNĐ</span>
+              </div>
+              <p class="text-gray-500 mt-1">Matcha lễ đạo chuẩn Kyoto.</p>
+            </li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="mt-12 bg-white rounded-3xl p-10 shadow-soft border border-white/40">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="text-2xl font-accent text-black">Trải nghiệm Omakase riêng tư</h3>
+            <p class="mt-4 text-gray-600">Chỉ 8 chỗ mỗi phiên, phục vụ bởi bếp trưởng Takahiro Sato. Thực khách sẽ được dẫn dắt qua hành trình 12 món, mỗi món kể một câu chuyện về mùa vụ và vùng đất Nhật Bản.</p>
+            <ul class="mt-6 space-y-2 text-sm text-gray-600 list-disc list-inside">
+              <li>Thực đơn thay đổi theo mùa</li>
+              <li>Kết hợp sake pairing 6 loại</li>
+              <li>Không gian riêng tư với phòng trà</li>
+            </ul>
+          </div>
+          <div class="bg-gray-light rounded-3xl p-8">
+            <p class="text-sm uppercase tracking-[0.35em] text-gray-500">Giá trọn gói</p>
+            <p class="text-4xl font-accent text-brown mt-4">3.800.000 VNĐ/người</p>
+            <p class="mt-4 text-gray-600">Liên hệ concierge để được tư vấn và thiết kế thực đơn cá nhân hóa.</p>
+            <a href="#reservation" class="inline-flex mt-6 items-center justify-center bg-brown text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-brown-light transition">Đặt lịch ngay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white" id="experience">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-10">
+        <div class="lg:col-span-1 space-y-6">
+          <p class="text-sm uppercase tracking-[0.35em] text-gray-500">Experience</p>
+          <h2 class="text-3xl font-accent text-black">Không gian &amp; dịch vụ đẳng cấp</h2>
+          <p class="text-gray-600">Từ phòng trà truyền thống, khu sushi bar đến lounge riêng tư, Mikoto tạo nên hành trình trải nghiệm đa chiều cho từng giác quan.</p>
+          <div class="flex items-center space-x-6">
+            <div>
+              <p class="text-3xl font-accent text-brown">5</p>
+              <p class="text-sm text-gray-600">Không gian riêng biệt</p>
+            </div>
+            <div>
+              <p class="text-3xl font-accent text-brown">24/7</p>
+              <p class="text-sm text-gray-600">Concierge hỗ trợ</p>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-2 grid sm:grid-cols-2 gap-6">
+          <div class="rounded-3xl overflow-hidden shadow-soft">
+            <img src="https://images.unsplash.com/photo-1570692496664-6c3c1c27c7c5?auto=format&fit=crop&w=1000&q=80" alt="Tea ceremony room" class="w-full h-64 object-cover" />
+            <div class="p-6 bg-white">
+              <h3 class="text-lg font-semibold text-black">Phòng trà Hanami</h3>
+              <p class="mt-2 text-sm text-gray-600">Không gian trà đạo với nghệ nhân trà, thích hợp cho tiệc 6 khách.</p>
+            </div>
+          </div>
+          <div class="rounded-3xl overflow-hidden shadow-soft">
+            <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1000&q=80" alt="Sushi bar" class="w-full h-64 object-cover" />
+            <div class="p-6 bg-white">
+              <h3 class="text-lg font-semibold text-black">Sushi Bar Signature</h3>
+              <p class="mt-2 text-sm text-gray-600">Quan sát trực tiếp bếp trưởng Takahiro Sato chuẩn bị từng lát sashimi.</p>
+            </div>
+          </div>
+          <div class="rounded-3xl overflow-hidden shadow-soft">
+            <img src="https://images.unsplash.com/photo-1549026851-43187abc2c11?auto=format&fit=crop&w=1000&q=80" alt="Private dining room" class="w-full h-64 object-cover" />
+            <div class="p-6 bg-white">
+              <h3 class="text-lg font-semibold text-black">Private Lounge Kintsugi</h3>
+              <p class="mt-2 text-sm text-gray-600">Phòng riêng cho 12 khách với bộ sưu tập sake độc quyền.</p>
+            </div>
+          </div>
+          <div class="rounded-3xl overflow-hidden shadow-soft">
+            <img src="https://images.unsplash.com/photo-1548943487-a2e4e43b4853?auto=format&fit=crop&w=1000&q=80" alt="Chef preparing dishes" class="w-full h-64 object-cover" />
+            <div class="p-6 bg-white">
+              <h3 class="text-lg font-semibold text-black">Dịch vụ concierge</h3>
+              <p class="mt-2 text-sm text-gray-600">Thiết kế trải nghiệm cá nhân hóa, từ xe đưa đón đến hoa tươi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reservation" class="py-24 bg-black text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.35em] text-gray-400">Reservation</p>
+          <h2 class="text-3xl font-accent">Đặt bàn với concierge riêng</h2>
+          <p class="mt-6 text-gray-300">Đội ngũ concierge của Mikoto luôn sẵn sàng 24/7 để hỗ trợ đặt bàn, gợi ý pairing và chuẩn bị các yêu cầu đặc biệt cho quý khách.</p>
+          <ul class="mt-6 space-y-3 text-sm text-gray-300">
+            <li class="flex items-center space-x-3">
+              <span class="h-8 w-8 rounded-full bg-white/10 flex items-center justify-center">①</span>
+              <span>Chọn ngày, giờ và số lượng khách.</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <span class="h-8 w-8 rounded-full bg-white/10 flex items-center justify-center">②</span>
+              <span>Concierge sẽ liên hệ trong 15 phút.</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <span class="h-8 w-8 rounded-full bg-white/10 flex items-center justify-center">③</span>
+              <span>Xác nhận trải nghiệm và yêu cầu đặc biệt.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-white text-gray-800 rounded-3xl p-8 shadow-soft">
+          <form class="space-y-5" aria-labelledby="reservation-title">
+            <h3 id="reservation-title" class="text-2xl font-accent text-black">Đặt bàn cao cấp</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <label class="text-sm font-medium text-gray-600">Họ và tên
+                <input type="text" name="name" placeholder="Ví dụ: Nguyễn Minh Anh" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-brown focus:ring-brown/20" required />
+              </label>
+              <label class="text-sm font-medium text-gray-600">Email
+                <input type="email" name="email" placeholder="example@email.com" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-brown focus:ring-brown/20" required />
+              </label>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <label class="text-sm font-medium text-gray-600">Số điện thoại
+                <input type="tel" name="phone" placeholder="(+84) 912 345 678" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-brown focus:ring-brown/20" />
+              </label>
+              <label class="text-sm font-medium text-gray-600">Số khách
+                <input type="number" name="guests" min="1" max="20" value="2" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-brown focus:ring-brown/20" />
+              </label>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <label class="text-sm font-medium text-gray-600">Ngày đặt bàn
+                <input type="date" name="date" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-brown focus:ring-brown/20" />
+              </label>
+              <label class="text-sm font-medium text-gray-600">Giờ
+                <select name="time" class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-brown focus:ring-brown/20">
+                  <option>18:00</option>
+                  <option>18:30</option>
+                  <option>19:00</option>
+                  <option>19:30</option>
+                  <option>20:00</option>
+                  <option>20:30</option>
+                </select>
+              </label>
+            </div>
+            <label class="text-sm font-medium text-gray-600">Yêu cầu đặc biệt
+              <textarea name="message" rows="4" placeholder="Dị ứng, dịp đặc biệt, yêu cầu trang trí..." class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-brown focus:ring-brown/20"></textarea>
+            </label>
+            <button type="submit" class="w-full bg-brown text-white py-3 rounded-full font-semibold hover:bg-brown-light transition">Gửi yêu cầu đặt bàn</button>
+            <p class="text-xs text-gray-500 text-center">Đây là mẫu mô phỏng dựa trên Contact Form 7. Concierge sẽ phản hồi trong vòng 15 phút.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-gray-light/80" id="testimonials">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-6">
+        <div>
+          <p class="text-sm uppercase tracking-[0.35em] text-gray-500">Reviews</p>
+          <h2 class="text-3xl font-accent text-black">Khách hàng nói gì về Mikoto</h2>
+        </div>
+        <a href="#" class="text-sm font-semibold text-brown hover:text-brown-light">Xem toàn bộ đánh giá</a>
+      </div>
+      <div class="mt-12 grid lg:grid-cols-3 gap-6">
+        <article class="bg-white rounded-3xl p-8 shadow-soft border border-white/40">
+          <div class="flex items-center space-x-4">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Review by Lê Minh" class="h-14 w-14 rounded-full object-cover" />
+            <div>
+              <h3 class="font-semibold text-black">Lê Minh Anh</h3>
+              <p class="text-xs uppercase tracking-[0.2em] text-gray-500">Doanh nhân</p>
+            </div>
+          </div>
+          <p class="mt-6 text-gray-600 text-sm leading-relaxed">“Trải nghiệm Omakase tại Mikoto giống như một buổi trình diễn nghệ thuật. Mỗi món ăn đều mang đến một câu chuyện và cảm xúc khác biệt.”</p>
+          <p class="mt-4 text-sm text-brown font-semibold">Đánh giá: 5/5</p>
+        </article>
+        <article class="bg-white rounded-3xl p-8 shadow-soft border border-white/40">
+          <div class="flex items-center space-x-4">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Review by David Nguyen" class="h-14 w-14 rounded-full object-cover" />
+            <div>
+              <h3 class="font-semibold text-black">David Nguyen</h3>
+              <p class="text-xs uppercase tracking-[0.2em] text-gray-500">Art Collector</p>
+            </div>
+          </div>
+          <p class="mt-6 text-gray-600 text-sm leading-relaxed">“Không gian sang trọng, dịch vụ concierge tinh tế và thực đơn pairing sake đỉnh cao. Mikoto là điểm đến số một cho các dịp quan trọng.”</p>
+          <p class="mt-4 text-sm text-brown font-semibold">Đánh giá: 4.9/5</p>
+        </article>
+        <article class="bg-white rounded-3xl p-8 shadow-soft border border-white/40">
+          <div class="flex items-center space-x-4">
+            <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Review by Nakamura Yui" class="h-14 w-14 rounded-full object-cover" />
+            <div>
+              <h3 class="font-semibold text-black">Nakamura Yui</h3>
+              <p class="text-xs uppercase tracking-[0.2em] text-gray-500">Travel Writer</p>
+            </div>
+          </div>
+          <p class="mt-6 text-gray-600 text-sm leading-relaxed">“日本で味わった味そのままのクオリティ。季節ごとの食材を活かした料理と丁寧なサービスに感動しました。”</p>
+          <p class="mt-4 text-sm text-brown font-semibold">評価: 5/5</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <p class="text-sm uppercase tracking-[0.35em] text-gray-500">Gallery</p>
+          <h2 class="text-3xl font-accent text-black">Khoảnh khắc tại Mikoto</h2>
+        </div>
+        <div class="flex items-center space-x-2 text-sm text-gray-500">
+          <span>Follow us:</span>
+          <a href="https://facebook.com/restaurantname" class="hover:text-brown">Facebook</a>
+          <span class="text-gray-300">|</span>
+          <a href="https://instagram.com/restaurantname" class="hover:text-brown">Instagram</a>
+          <span class="text-gray-300">|</span>
+          <a href="https://tiktok.com/@restaurantname" class="hover:text-brown">TikTok</a>
+        </div>
+      </div>
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        <div class="rounded-3xl overflow-hidden shadow-soft">
+          <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80" alt="Sushi plate" class="w-full h-72 object-cover" />
+        </div>
+        <div class="rounded-3xl overflow-hidden shadow-soft">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="Japanese cuisine" class="w-full h-72 object-cover" />
+        </div>
+        <div class="rounded-3xl overflow-hidden shadow-soft">
+          <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=800&q=80" alt="Dining room" class="w-full h-72 object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog" class="py-24 bg-gray-light/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <p class="text-sm uppercase tracking-[0.35em] text-gray-500">Blog</p>
+          <h2 class="text-3xl font-accent text-black">Nhật ký vị giác</h2>
+        </div>
+        <a href="#" class="text-sm font-semibold text-brown hover:text-brown-light">Xem tất cả bài viết</a>
+      </div>
+      <div class="mt-12 grid lg:grid-cols-3 gap-8">
+        <article class="bg-white rounded-3xl overflow-hidden shadow-soft border border-white/40">
+          <img src="https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?auto=format&fit=crop&w=900&q=80" alt="Seasonal Omakase" class="h-56 w-full object-cover" />
+          <div class="p-6 space-y-4">
+            <p class="text-xs uppercase tracking-[0.2em] text-gray-500">Seasonal</p>
+            <h3 class="text-xl font-semibold text-black">Mùa thu và nghệ thuật Omakase 12 món</h3>
+            <p class="text-sm text-gray-600">Khám phá hành trình vị giác mang đậm sắc thu Nhật Bản với cá hồi Hokkaido và nấm Matsutake.</p>
+            <a href="#" class="text-sm font-semibold text-brown hover:text-brown-light">Đọc tiếp</a>
+          </div>
+        </article>
+        <article class="bg-white rounded-3xl overflow-hidden shadow-soft border border-white/40">
+          <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80" alt="Sake Pairing" class="h-56 w-full object-cover" />
+          <div class="p-6 space-y-4">
+            <p class="text-xs uppercase tracking-[0.2em] text-gray-500">Sake Pairing</p>
+            <h3 class="text-xl font-semibold text-black">6 loại sake dành riêng cho giới sành</h3>
+            <p class="text-sm text-gray-600">Từ Dassai Beyond đến Juyondai, bộ sưu tập sake của Mikoto được tuyển chọn khắt khe.</p>
+            <a href="#" class="text-sm font-semibold text-brown hover:text-brown-light">Đọc tiếp</a>
+          </div>
+        </article>
+        <article class="bg-white rounded-3xl overflow-hidden shadow-soft border border-white/40">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80" alt="Tea ceremony" class="h-56 w-full object-cover" />
+          <div class="p-6 space-y-4">
+            <p class="text-xs uppercase tracking-[0.2em] text-gray-500">Culture</p>
+            <h3 class="text-xl font-semibold text-black">Nghi lễ trà đạo và nghệ thuật phục vụ</h3>
+            <p class="text-sm text-gray-600">Gặp gỡ nghệ nhân trà của Mikoto và hành trình gìn giữ tinh hoa văn hóa Nhật.</p>
+            <a href="#" class="text-sm font-semibold text-brown hover:text-brown-light">Đọc tiếp</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12">
+        <div class="space-y-6">
+          <p class="text-sm uppercase tracking-[0.35em] text-gray-500">Contact</p>
+          <h2 class="text-3xl font-accent text-black">Kết nối với Mikoto</h2>
+          <p class="text-gray-600">Đội ngũ concierge luôn sẵn sàng hỗ trợ quý khách mọi lúc. Liên hệ qua các kênh sau hoặc ghé thăm chúng tôi.</p>
+          <div class="space-y-4 text-sm text-gray-600">
+            <p><strong class="text-black">Địa chỉ:</strong> 88 Nguyễn Du, Quận 1, TP. Hồ Chí Minh</p>
+            <p><strong class="text-black">Hotline:</strong> <a href="tel:+842836000888" class="text-brown hover:text-brown-light">(+84) 28 3600 0888</a></p>
+            <p><strong class="text-black">Email:</strong> <a href="mailto:concierge@mikoto.jp" class="text-brown hover:text-brown-light">concierge@mikoto.jp</a></p>
+            <p><strong class="text-black">Giờ mở cửa:</strong> 11:00 - 23:00 (hàng ngày)</p>
+          </div>
+          <div class="flex space-x-4">
+            <a href="https://facebook.com/restaurantname" aria-label="Facebook" class="h-10 w-10 rounded-full bg-gray-light flex items-center justify-center text-gray-700 hover:text-brown"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 22v-8h3l1-4h-4V7c0-1.103.897-2 2-2h2V1h-3c-2.757 0-5 2.243-5 5v3H7v4h3v8h3z"/></svg></a>
+            <a href="https://instagram.com/restaurantname" aria-label="Instagram" class="h-10 w-10 rounded-full bg-gray-light flex items-center justify-center text-gray-700 hover:text-brown"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2c1.654 0 3 1.346 3 3s-1.346 3-3 3a3.003 3.003 0 01-3-3 3.003 3.003 0 013-3zm6.5-2a1.5 1.5 0 11-3.002.002A1.5 1.5 0 0118.5 7z"/></svg></a>
+            <a href="https://youtube.com/@restaurantname" aria-label="YouTube" class="h-10 w-10 rounded-full bg-gray-light flex items-center justify-center text-gray-700 hover:text-brown"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21.8 8.001a2.501 2.501 0 00-1.758-1.77C18.281 5.848 12 5.848 12 5.848s-6.281 0-8.042.383A2.501 2.501 0 002.2 8.001 26.108 26.108 0 002 12a26.108 26.108 0 00.2 3.999 2.501 2.501 0 001.758 1.77C5.719 18.152 12 18.152 12 18.152s6.281 0 8.042-.383a2.501 2.501 0 001.758-1.77c.132-1.316.2-2.64.2-3.999s-.068-2.683-.2-3.999zM10 15.005V8.995L15.2 12 10 15.005z"/></svg></a>
+          </div>
+        </div>
+        <div class="rounded-3xl overflow-hidden shadow-soft">
+          <iframe title="Mikoto location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.427632816972!2d106.6943954758614!3d10.777699259157473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f33f6f87f55%3A0x7c6041f5826a7e49!2zODggTmd1eeG7hW4gRHUsIEJlbm5laCBUaOG7q2ksIFF14bqtbiAxLCBI4buTIENow60gTWluaCBDaXR5!5e0!3m2!1svi!2svi!4v1709811111111!5m2!1svi!2svi" width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-black text-gray-300 py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-10">
+        <div>
+          <div class="flex items-center space-x-3">
+            <span class="h-10 w-10 rounded-full bg-brown text-white flex items-center justify-center font-accent text-lg">味</span>
+            <p class="font-accent text-xl text-white">Mikoto</p>
+          </div>
+          <p class="mt-4 text-sm text-gray-400">味と心の芸術 - Nghệ thuật của vị giác và tâm hồn.</p>
+        </div>
+        <div>
+          <h3 class="text-sm uppercase tracking-[0.3em] text-white">Navigation</h3>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a href="#home" class="hover:text-brown">Trang chủ</a></li>
+            <li><a href="#about" class="hover:text-brown">Về chúng tôi</a></li>
+            <li><a href="#menu" class="hover:text-brown">Thực đơn</a></li>
+            <li><a href="#reservation" class="hover:text-brown">Đặt bàn</a></li>
+            <li><a href="#contact" class="hover:text-brown">Liên hệ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm uppercase tracking-[0.3em] text-white">Ngôn ngữ</h3>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>Tiếng Việt</li>
+            <li>English</li>
+            <li>日本語</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm uppercase tracking-[0.3em] text-white">Bản tin</h3>
+          <p class="mt-4 text-sm text-gray-400">Nhận thông tin về sự kiện và thực đơn mới mỗi tháng.</p>
+          <form class="mt-4 flex items-center space-x-2">
+            <input type="email" placeholder="Email của bạn" class="flex-1 rounded-full bg-white/10 border border-white/10 px-4 py-2 text-sm focus:border-brown focus:ring-brown/20" />
+            <button class="bg-brown text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-brown-light transition" type="submit">Gửi</button>
+          </form>
+        </div>
+      </div>
+      <div class="mt-10 border-t border-white/10 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs text-gray-500">
+        <p>© 2024 Mikoto Japanese Dining. All rights reserved.</p>
+        <p>Designed with Tailwind CSS · WordPress 6.8 ready</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const languageButtons = document.querySelectorAll('[data-lang]');
+    const languageSections = document.querySelectorAll('.language-section');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    languageButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const selectedLang = button.getAttribute('data-lang');
+        languageButtons.forEach(btn => {
+          if (btn.closest('#mobile-menu')) {
+            btn.classList.toggle('bg-gray-light', btn.getAttribute('data-lang') === selectedLang);
+            btn.classList.toggle('border-gray-200', btn.getAttribute('data-lang') !== selectedLang);
+          } else {
+            btn.classList.toggle('bg-gray-light', btn.getAttribute('data-lang') === selectedLang);
+            btn.classList.toggle('text-gray-700', btn.getAttribute('data-lang') === selectedLang);
+            btn.classList.toggle('text-gray-500', btn.getAttribute('data-lang') !== selectedLang);
+          }
+        });
+        languageSections.forEach(section => {
+          const isActive = section.getAttribute('data-lang') === selectedLang;
+          section.setAttribute('data-active', isActive);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
